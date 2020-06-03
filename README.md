@@ -115,6 +115,9 @@ Response:
 
 ### 6. Run tyk slave gw on LOCAL
 A) go to worker folder
+```
+cd ../worker
+```
 
 B) Add these to tyk_worker.conf
 - RPC key (org ID) to `slave_options.rpc_key`
