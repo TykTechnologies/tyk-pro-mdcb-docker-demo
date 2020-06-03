@@ -29,6 +29,8 @@ cd mdcb
 
 B) Add your Tyk Pro license to `confs/tyk_analytics.conf` to the `license_key` variable.
 
+C) Add your MDCB license to `confs/sink.conf` to the `license` variable.
+
 ### 2. Run Stack
 `docker-compose up -d`
 
