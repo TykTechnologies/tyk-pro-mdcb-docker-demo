@@ -11,7 +11,12 @@ services:
     - tyk-worker
     depends_on:
     - tyk-redis
-  
+    ulimits:
+      nofile:
+        soft: 40000
+        hard: 80000
+    environment:
+      - GOGC=1600
   tyk-redis:
     image: redis
     ports:

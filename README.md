@@ -142,6 +142,7 @@ B) ADD to `tyk_worker.conf`, get these from the Dashboard's User Profile
 - RPC key
 - API key
 - connection_string
+- Add a unique "group_id" to describe this worker cluster.  These must be unique for each Location/Data Center
 
 C) Run The GW cluster
 `docker-compose up -d`
