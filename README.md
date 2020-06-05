@@ -130,10 +130,8 @@ docker-compose up -d
 ### 7. Run tyk slave gw on REMOTE
 A) install the following
 ```
-git clone https://github.com/TykTechnologies/tyk-pro-docker-demo
-cd tyk-pro-docker-demo/
-git checkout mdcb
-cd worker
+git clone https://github.com/TykTechnologies/tyk-pro-mdcb-docker-demo
+cd tyk-pro-mdcb-docker-demo/worker
 ```
 
 B) ADD to `tyk_worker.conf`, get these from the Dashboard's User Profile
