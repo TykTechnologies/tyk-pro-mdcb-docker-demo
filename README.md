@@ -21,10 +21,9 @@ docker ps
 
 A) Clone repo and checkout branch, go to mdcb folder
 ```
-git clone https://github.com/TykTechnologies/tyk-pro-docker-demo
-cd tyk-pro-docker-demo/
-git checkout mdcb
-cd mdcb
+git clone https://github.com/TykTechnologies/tyk-pro-mdcb-docker-demo
+cd tyk-pro-mdcb-docker-demo/
+cd tyk-pro-mdcb-docker-demo
 ```
 
 B) Add your Tyk Pro license to `confs/tyk_analytics.conf` to the `license_key` variable.
