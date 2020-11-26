@@ -13,6 +13,8 @@ services:
     - tyk-dashboard
     networks:
     - tyk
+    environment:
+    - TYK_MDCB_LICENSE=${MDCB_LICENCE:?Please set MDCB_LICENCE in .env}
   tyk-dashboard:
     image: tykio/tyk-dashboard:latest
     ports:
@@ -25,6 +27,8 @@ services:
     - tyk-mongo
     volumes: 
     - ./confs/tyk_analytics.conf:/opt/tyk-dashboard/tyk_analytics.conf
+    environment:
+    - TYK_DB_LICENSEKEY=${DASHBOARD_LICENCE:?Dashboard licence missing from Docker environment file .env. Review The Getting Started steps in README.md.}
   tyk-mgateway:
     image: tykio/tyk-gateway:latest
     volumes:
@@ -55,7 +59,7 @@ services:
     networks:
     - tyk
   tyk-mongo:
-    image: mongo:3.2
+    image: mongo:4.0.2
     command: ["mongod", "--smallfiles"]
     ports:
     - "27017:27017"

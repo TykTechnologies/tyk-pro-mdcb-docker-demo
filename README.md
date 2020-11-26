@@ -21,13 +21,17 @@ docker ps
 
 A) Clone repo and checkout branch, go to mdcb folder
 ```
+export REPOKEY={the-token-you-got-from-tyk}
 git clone https://github.com/TykTechnologies/tyk-pro-mdcb-docker-demo
 cd tyk-pro-mdcb-docker-demo/mdcb
+docker build --build-arg REPOKEY=$REPOKEY -t tykio/tyk-mdcb-docker  .
 ```
 
-B) Add your Tyk Pro license to `confs/tyk_analytics.conf` to the `license_key` variable.
+B) Create environment variable named ".env" to be used by docker-compose. in the env file set the following keys:
+```
+DASHBOARD_LICENCE={add-your-dashboard-license-here}
+MDCB_LICENCE={add-your-mdcb-license-here} 
 
-C) Add your MDCB license to `confs/sink.conf` to the `license` variable.
 
 ### 2. Run Stack
 `docker-compose up -d`
