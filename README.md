@@ -115,7 +115,10 @@ Response:
 {"Status":"OK","Message":"Org updated","Meta":null}
 ```
 
-### 6. Run tyk slave gw on LOCAL
+### 6. Run tyk slave gw
+
+This can be local DC or remote DC.  If remote DC, clone the repo again on the new DC.
+
 A) go to worker folder
 ```
 cd ../worker
@@ -125,29 +128,14 @@ B) Add these to tyk_worker.conf
 - RPC key (org ID) to `slave_options.rpc_key`
 - API key (user API key) `slave_options.api_key`
 - connection_string (of VM) plus port 9090 to `slave_options.connection_string`, ie `10.45.166.51:9090`
+- Add a unique "group_id" to describe this worker cluster.  These must be unique for each Location/Data Center
 
 C) run
 ```
 docker-compose up -d
 ```
 
-### 7. Run tyk slave gw on REMOTE
-A) install the following
-```
-git clone https://github.com/TykTechnologies/tyk-pro-mdcb-docker-demo
-cd tyk-pro-mdcb-docker-demo/worker
-```
-
-B) ADD to `tyk_worker.conf`, get these from the Dashboard's User Profile
-- RPC key
-- API key
-- connection_string
-- Add a unique "group_id" to describe this worker cluster.  These must be unique for each Location/Data Center
-
-C) Run The GW cluster
-`docker-compose up -d`
-
-### 8. Install & Run Tib
+### 7. Install & Run Tib
 
 A) Run the stack
 `docker-compose -f docker-compose-tib.yml up -d`
