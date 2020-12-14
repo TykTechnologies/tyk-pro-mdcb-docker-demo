@@ -17,9 +17,9 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 docker ps
 ```
 
-### 1. Install tyk pro
+### 1. Setting up prerequisites for Tyk pro and Tyk MDCB
 
-A) Clone repo and checkout branch, go to mdcb folder
+A) Clone repo and checkout branch, go to mdcb folder to build the MDCB image
 ```
 export REPOKEY={the-token-you-got-from-tyk}
 git clone https://github.com/TykTechnologies/tyk-pro-mdcb-docker-demo
@@ -31,7 +31,7 @@ B) Create environment variable named ".env" to be used by docker-compose. in the
 ```
 DASHBOARD_LICENCE={add-your-dashboard-license-here}
 MDCB_LICENCE={add-your-mdcb-license-here} 
-
+```
 
 ### 2. Run Stack
 `docker-compose up -d`
