@@ -21,7 +21,7 @@ RUN curl -s https://$REPOKEY:@packagecloud.io/install/repositories/tyk/tyk-mdcb/
  && apt-get install --allow-unauthenticated -f --force-yes -y tyk-sink=$TYKVERSION \
  && rm -rf /var/lib/apt/lists/*
 
-COPY ./sink.conf /opt/tyk-sink/tyk_sink.conf
+COPY ./confs/sink.conf /opt/tyk-sink/tyk_sink.conf
 
 WORKDIR /opt/tyk-sink
 

@@ -24,10 +24,10 @@ A) Clone repo and checkout branch, go to mdcb folder to build the MDCB image
 export REPOKEY={the-token-you-got-from-tyk}
 git clone https://github.com/TykTechnologies/tyk-pro-mdcb-docker-demo
 cd tyk-pro-mdcb-docker-demo/mdcb
-docker build --build-arg REPOKEY=$REPOKEY -t tykio/tyk-mdcb-docker  .
+docker build --build-arg REPOKEY=$REPOKEY -t tykio/tyk-mdcb-docker -f ./confs/Dockerfile .
 ```
 
-B) Create environment variable named ".env" to be used by docker-compose. in the env file set the following keys:
+B) In the `mdcb` directory, create file named ".env".  We will load our env variables here to be used by docker-compose. The contents of the file:
 ```
 DASHBOARD_LICENCE={add-your-dashboard-license-here}
 MDCB_LICENCE={add-your-mdcb-license-here} 
