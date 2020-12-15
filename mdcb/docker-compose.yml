@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   tyk-mdcb: 
-    image: tykio/tyk-mdcb-docker
+    image: tykio/tyk-mdcb-docker:v1.7.5
     volumes: 
     - ./confs/sink.conf:/opt/tyk-sink/tyk_sink.conf
     ports:
@@ -16,7 +16,7 @@ services:
     environment:
     - TYK_MDCB_LICENSE=${MDCB_LICENCE:?Please set MDCB_LICENCE in .env}
   tyk-dashboard:
-    image: tykio/tyk-dashboard:latest
+    image: tykio/tyk-dashboard:v3.1.1
     ports:
     - "3000:3000"
     - "5000:5000"
@@ -30,7 +30,7 @@ services:
     environment:
     - TYK_DB_LICENSEKEY=${DASHBOARD_LICENCE:?Dashboard licence missing from Docker environment file .env. Review The Getting Started steps in README.md.}
   tyk-mgateway:
-    image: tykio/tyk-gateway:latest
+    image: tykio/tyk-gateway:v3.1.1
     volumes:
       - ./confs/tyk.conf:/opt/tyk-gateway/tyk.conf
       - ./middleware:/opt/tyk-gateway/middleware

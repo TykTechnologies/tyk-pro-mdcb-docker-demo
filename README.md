@@ -127,8 +127,8 @@ cd ../worker
 B) Add these to tyk_worker.conf
 - RPC key (org ID) to `slave_options.rpc_key`
 - API key (user API key) `slave_options.api_key`
-- connection_string (of VM) plus port 9090 to `slave_options.connection_string`, ie `10.45.166.51:9090`
-- Add a unique "group_id" to describe this worker cluster.  These must be unique for each Location/Data Center
+- connection_string without protocol (of VM) plus port 9090 to `slave_options.connection_string`, ie `10.45.166.51:9090` or `host.docker.internal:9090`
+- Add a unique `group_id` to describe this worker cluster.  These must be unique for each Location/Data Center
 
 C) run
 ```
