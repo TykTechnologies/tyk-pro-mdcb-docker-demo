@@ -19,12 +19,10 @@ docker ps
 
 ### 1. Setting up prerequisites for Tyk pro and Tyk MDCB
 
-A) Clone repo and checkout branch, go to mdcb folder to build the MDCB image
+A) Clone repo
 ```
-export REPOKEY={the-token-you-got-from-tyk}
 git clone https://github.com/TykTechnologies/tyk-pro-mdcb-docker-demo
 cd tyk-pro-mdcb-docker-demo/mdcb
-docker build --build-arg REPOKEY=$REPOKEY -t tykio/tyk-mdcb-docker -f ./confs/Dockerfile .
 ```
 
 B) In the `mdcb` directory, create file named ".env".  We will load our env variables here to be used by docker-compose. The contents of the file:
@@ -39,42 +37,7 @@ MDCB_LICENCE={add-your-mdcb-license-here}
 ### 3. Bootstrap the install
 Log on to the Dashboard via `http://<your-host>:3000`
 
-### 4. RUN MDCB from RPM (OPTIONAL IF YOU DON'T RUN MDCB FROM DOCKER)
-Prequisites
-
--If you would prefer to run the MDCB from RPM, make sure you remove the "tyk-mdcb" service from the `docker-compose.yml` before proceeding.
-
--You need to be given a token to download the MDCB package.
-
-A) Download the MDCB package
-
-`curl -s https://TOKEN:@packagecloud.io/install/repositories/tyk/tyk-mdcb/script.rpm.sh | sudo bash`
-
-B) Install It
-
-`sudo yum install tyk-sink`
-
-C) Edit /opt/tyk-sink/tyk_sink.conf
-
--Add your MDCB license to `license`
-
--Update `storage.port` to `6380`
-
-D) Run the Service
-```
-sudo systemctl start tyk-sink
-sudo systemctl enable tyk-sink
-```
-
-Check it's running:
-```
-sudo journalctl -u tyk-sink 
-```
-Output:
-
-<response>
-
-### 5. Enable Hybrid on Master DC
+### 4. Enable Hybrid on Master DC
 
 Export the defaults
 ```
@@ -83,6 +46,7 @@ export DASH_URL=localhost:3000
 ```
 
 Export your Dashboard's ORG ID
+You can find your organisation id in the Dashboard, under your user account details.
 ```
 export ORG_ID=<YOUR_ORG_ID>
 ```
@@ -115,7 +79,7 @@ Response:
 {"Status":"OK","Message":"Org updated","Meta":null}
 ```
 
-### 6. Run tyk slave gw
+### 5. Run tyk slave gw
 
 This can be local DC or remote DC.  If remote DC, clone the repo again on the new DC.
 
@@ -133,18 +97,4 @@ B) Add these to tyk_worker.conf
 C) run
 ```
 docker-compose up -d
-```
-
-### 7. Install & Run Tib
-
-A) Run the stack
-`docker-compose -f docker-compose-tib.yml up -d`
-
-B) Modify `nginx/index.html` and use the right IP instead of `localhost`
-
-C) Modify `confs/profile.json` with correct:
-```
-"OrgID" ---> "Use your OrgID"
-"IdentityHandlerConfig.DashboardCredential" --- This is your User's API Key
-"ProviderConfig.ReturnUrl" ---> Use correct IP instead of localhost
 ```

@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   tyk-gateway:
-    image: tykio/tyk-gateway:latest
+    image: tykio/tyk-gateway:v3.2.2
     volumes:
       - ./tyk_worker.conf:/opt/tyk-gateway/tyk.conf
       - ./middleware:/opt/tyk-gateway/middleware
